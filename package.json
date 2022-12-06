@@ -10,17 +10,30 @@
     "@types/node": "^16.18.6",
     "@types/react": "^18.0.26",
     "@types/react-dom": "^18.0.9",
+    "axios": "^1.2.1",
+    "Babel": "^0.0.1",
+    "node-sass": "^7.0.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",
     "typescript": "^4.9.3",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "antd": "^5.0.4",
+    "antd-icons": "^0.1.0-alpha.1",
+    "babel": "^6.23.0",
+    "eslint": "^8.29.0",
+    "husky": "^8.0.2",
+    "lodash": "^4.17.21",
+    "mobx": "^6.7.0",
+    "moment": "^2.29.4",
+    "prettier": "^2.8.0",
+    "react-router-dom": "^6.4.4",
+    "stylint": "^2.0.0",
+    "webpack": "^5.75.0"
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "build": "react-scripts build"
   },
   "eslintConfig": {
     "extends": [
@@ -39,5 +52,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@babel/preset-react": "^7.18.6"
   }
 }
