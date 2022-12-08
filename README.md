@@ -18,7 +18,7 @@
 
 ### Запуск
 
-`npm run start`
+`npm run serve`
 
 ### Билд
 

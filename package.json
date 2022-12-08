@@ -17,7 +17,8 @@
   },
   "scripts": {
     "setup": "npm i --save-dev",
-    "start": "react-scripts start",
+    "prepare": "husky install",
+    "serve": "react-scripts start",
     "build": "react-scripts build",
     "lint:staged": "lint-staged",
     "hooks:pre-commit": "npm run lint:staged"
