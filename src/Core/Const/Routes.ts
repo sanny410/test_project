@@ -1,11 +1,10 @@
 /**
  * Мапа всех роутов приложения
  */
-export const ROUTE = {
+const ROUTES = {
     APP: {
         PATH: '/',
     },
-    HELLO_WORLD: {
-        PATH: '/hello-world',
-    },
 };
+
+export default ROUTES;

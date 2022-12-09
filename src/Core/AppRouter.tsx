@@ -1,6 +1,6 @@
 import {FunctionComponent} from 'react';
 
-import {ROUTE} from 'Core/Const/Route';
+import ROUTES from 'Core/Const/Routes';
 import HelloWorldPage from 'Pages/HelloWorldPage';
 import NotFoundPage from 'Pages/NotFoundPage';
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
@@ -12,8 +12,7 @@ const AppRouter: FunctionComponent = () => {
     return (
         <BrowserRouter>
             <Routes>
-                <Route path={ROUTE.HELLO_WORLD.PATH} element={<HelloWorldPage />} />
-                <Route path={ROUTE.APP.PATH} element={<HelloWorldPage />} />
+                <Route path={ROUTES.APP.PATH} element={<HelloWorldPage />} />
                 <Route path="*" element={<NotFoundPage />} />
             </Routes>
         </BrowserRouter>

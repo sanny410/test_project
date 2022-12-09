@@ -1,36 +1,44 @@
-import {FunctionComponent} from 'react';
+import {FunctionComponent, ReactNode} from 'react';
 
 import {Layout, Menu} from 'antd';
+import MENU_ITEMS from 'Core/Const/MenuItems';
+import {MenuInfo} from 'rc-menu/lib/interface';
+import {useNavigate, useLocation} from 'react-router-dom';
 
-import './index.less';
+import './index.scss';
 
 const {Header, Content, Footer} = Layout;
 
 interface IProps {
-    content: React.ReactElement;
+    children?: ReactNode;
 }
 
-const PageWrapper: FunctionComponent<IProps> = ({content}) => {
+const PageWrapper: FunctionComponent<IProps> = ({children}) => {
+    const navigate = useNavigate();
+    const location = useLocation();
+
+    const selectedMenuItem = location.pathname;
+    const menuItems = MENU_ITEMS.map((item) => ({key: item.route, label: item.title}));
+
+    const handleClick = (selectedItem: MenuInfo): void => {
+        navigate(selectedItem.key);
+    };
+
     return (
         <Layout className="layout">
-            <Header className="layout-header">
+            <Header className="layout__header">
                 <Menu
-                    theme="dark"
+                    theme="light"
                     mode="horizontal"
-                    defaultSelectedKeys={['2']}
-                    items={new Array(15).fill(null).map((_, index) => {
-                        const key = index + 1;
-                        return {
-                            key,
-                            label: `nav ${key}`,
-                        };
-                    })}
+                    selectedKeys={[selectedMenuItem]}
+                    items={menuItems}
+                    onClick={handleClick}
                 />
             </Header>
-            <Content className="layout-content">
-                <div className="site-layout-content">{content}</div>
+            <Content className="layout__content">
+                <div className="layout__content__container">{children}</div>
             </Content>
-            <Footer className="layout-footer"></Footer>
+            <Footer className="layout__footer"></Footer>
         </Layout>
     );
 };

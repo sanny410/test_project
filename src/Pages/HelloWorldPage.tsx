@@ -4,7 +4,11 @@ import HelloWorld from 'Components/HelloWorld';
 import PageWrapper from 'Components/PageWrapper';
 
 const HelloWorldPage: FunctionComponent = () => {
-    return <PageWrapper content={<HelloWorld />}></PageWrapper>;
+    return (
+        <PageWrapper>
+            <HelloWorld />
+        </PageWrapper>
+    );
 };
 
 export default HelloWorldPage;

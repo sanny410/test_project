@@ -3,7 +3,7 @@ import {FunctionComponent} from 'react';
 import {Typography} from 'antd';
 import useStores from 'Stores';
 
-import './index.less';
+import './index.scss';
 
 const {Title} = Typography;
 
