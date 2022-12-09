@@ -1,7 +1,11 @@
 import {FunctionComponent} from 'react';
 
-export const App: FunctionComponent = () => {
-    return <div className="App">Hello world</div>;
+import AppRouter from 'Core/AppRouter';
+
+import 'Styles/app.less';
+
+const App: FunctionComponent = () => {
+    return <AppRouter />;
 };
 
 export default App;
