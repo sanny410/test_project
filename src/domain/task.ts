@@ -1,23 +1,35 @@
-export interface ITask {
-    id: number;
-    title: string;
-    description: string;
-    dateOfCreation: number;
-    timeAtWork: number;
-    expirationDate?: string;
-    priority: boolean;
-    currentStatus: EStatus;
-    comments: Comment[];
-    subtasks: ITask[];
+export interface Task {
+    title: TaskId;
+    description: TaskDescription;
+    dateOfCreation: TaskDateOfCreation;
+    expirationDate: TaskExpirationDate;
+    priority: ETaskPriority;
+    currentStatus: ETaskStatus;
+    comments: TaskComment[];
 }
 
-export interface Comment {
-    id: number;
-    text: string;
+export type TaskId = string;
+export type TaskDescription = string;
+export type TaskDateOfCreation = string;
+export type TaskExpirationDate = string | null;
+
+export enum ETaskPriority {
+    HIGH = 'high',
+    MIDDLE = 'middle',
+    LOW = 'low',
 }
 
-export enum EStatus {
-    Queue,
-    Development,
-    Done,
+export default ETaskPriority;
+
+export enum ETaskStatus {
+    QUEUE = 'queue',
+    DEVELOPMENT = 'development',
+    DONE = 'done',
+}
+
+export type TaskCommentText = string;
+
+export interface TaskComment {
+    id: number;
+    text: TaskCommentText;
 }
