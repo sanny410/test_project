@@ -1,5 +1,14 @@
+export type TaskId = string;
+export type TaskTitle = string;
+export type TaskDescription = string;
+export type TaskDateOfCreation = string;
+export type TaskExpirationDate = string | null;
+export type TaskCommentId = string;
+export type TaskCommentText = string;
+
 export interface Task {
-    title: TaskId;
+    id: TaskId;
+    title: TaskTitle;
     description: TaskDescription;
     dateOfCreation: TaskDateOfCreation;
     expirationDate: TaskExpirationDate;
@@ -8,10 +17,10 @@ export interface Task {
     comments: TaskComment[];
 }
 
-export type TaskId = string;
-export type TaskDescription = string;
-export type TaskDateOfCreation = string;
-export type TaskExpirationDate = string | null;
+export interface TaskComment {
+    id: TaskCommentId;
+    text: TaskCommentText;
+}
 
 export enum ETaskPriority {
     HIGH = 'high',
@@ -19,17 +28,8 @@ export enum ETaskPriority {
     LOW = 'low',
 }
 
-export default ETaskPriority;
-
 export enum ETaskStatus {
     QUEUE = 'queue',
     DEVELOPMENT = 'development',
     DONE = 'done',
-}
-
-export type TaskCommentText = string;
-
-export interface TaskComment {
-    id: number;
-    text: TaskCommentText;
 }
