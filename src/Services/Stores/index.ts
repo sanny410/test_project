@@ -1,9 +1,9 @@
 import {createContext, useContext} from 'react';
 
-import helloWorldStore from './HelloWorld';
+import projectStore from './Project';
 
 const storesContext = createContext({
-    helloWorldStore,
+    projectStore,
 });
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type

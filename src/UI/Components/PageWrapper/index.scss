@@ -1,4 +1,4 @@
-@import "~Styles/colors";
+@import "~UI/Styles/colors";
 
 .layout {
     height: 100vh;
@@ -12,12 +12,14 @@
     }
 
     &__content {
-        padding: 0 50px;
+        padding: 0 10%;
 
         &__container {
             height: 100%;
             padding: 24px;
             background-color: $color-page-content;
+            display: flex;
+            justify-content: center;
         }
     }
 

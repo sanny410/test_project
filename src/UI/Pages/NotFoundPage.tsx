@@ -1,7 +1,8 @@
 import {FunctionComponent} from 'react';
 
-import NotFound from 'Components/NotFound';
-import PageWrapper from 'Components/PageWrapper';
+import {observer} from 'mobx-react';
+import NotFound from 'UI/Components/NotFound';
+import PageWrapper from 'UI/Components/PageWrapper';
 
 const NotFoundPage: FunctionComponent = () => {
     return (
@@ -11,4 +12,4 @@ const NotFoundPage: FunctionComponent = () => {
     );
 };
 
-export default NotFoundPage;
+export default observer(NotFoundPage);

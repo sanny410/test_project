@@ -1,6 +1,7 @@
 import {FunctionComponent} from 'react';
 
 import {Typography} from 'antd';
+import {observer} from 'mobx-react';
 
 import './index.scss';
 
@@ -10,4 +11,4 @@ const NotFound: FunctionComponent = () => {
     return <Title type="danger">404</Title>;
 };
 
-export default NotFound;
+export default observer(NotFound);

@@ -5,7 +5,7 @@ import ROUTES from './Routes';
  */
 const MENU_ITEMS = [
     {
-        title: 'Привет',
+        title: 'Проекты',
         route: ROUTES.APP.PATH,
     },
 ];
