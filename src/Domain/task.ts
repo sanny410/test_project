@@ -1,6 +1,5 @@
+import {DateFormat} from 'Core/Const/DateTimeFormat';
 import moment from 'moment';
-
-import {DateFormat} from '../Core/Const/DateTimeFormat';
 
 export type TaskId = string;
 export type TaskTitle = string;

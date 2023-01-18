@@ -1,4 +1,4 @@
-import {Task, TaskCreatingSummary} from '../../Domain/task';
+import {Task, TaskCreatingSummary} from 'Domain/task';
 
 export interface TaskGateway {
     create: (summary: TaskCreatingSummary) => Promise<Task>;
