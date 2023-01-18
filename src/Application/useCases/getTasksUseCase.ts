@@ -9,6 +9,6 @@ interface Dependencies {
 }
 
 export const getAllTaskUseCase = async (summary: Task[], dependencies: Dependencies): Promise<void> => {
-    const tasks = await dependencies.taskGateway.getAllTask();
+    const tasks = await dependencies.taskGateway.getAll();
     dependencies.taskStore.setTasks(tasks);
 };

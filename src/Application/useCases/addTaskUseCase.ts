@@ -9,6 +9,6 @@ interface Dependencies {
 }
 
 export const addTaskUseCase = async (summary: TaskCreatingSummary, dependencies: Dependencies): Promise<void> => {
-    const task = await dependencies.taskGateway.add(summary);
+    const task = await dependencies.taskGateway.create(summary);
     dependencies.taskStore.setTasks([...dependencies.taskStore.tasks, task]);
 };
