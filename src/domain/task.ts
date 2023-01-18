@@ -53,6 +53,10 @@ export interface TaskUpdateSummary {
     status?: ETaskStatus;
 }
 
+export interface TaskCommentUpdateSummary {
+    text: TaskCommentText;
+}
+
 export enum ETaskPriority {
     HIGH = 'high',
     MIDDLE = 'middle',
@@ -99,15 +103,9 @@ export const addComment = (task: Task, comment: TaskComment): Task => {
 
 export const removeComment = (task: Task, comment: TaskComment): Task => {
     const comments = task.comments.filter((item) => item.id !== comment.id);
-    return {
-        ...task,
-        comments,
-    };
+    return {...task, comments};
 };
 
-export const updateComment = (comment: TaskComment, text: TaskCommentText): TaskComment => {
-    return {
-        id: comment.id,
-        text,
-    };
+export const updateComment = (summary: TaskCommentUpdateSummary, comment: TaskComment): TaskComment => {
+    return {id: comment.id, text: summary.text};
 };
