@@ -1,6 +1,6 @@
 import {createContext, useContext} from 'react';
 
-import helloWorldStore from './HelloWorld';
+import helloWorldStore from 'Services/Stores/HelloWorld';
 
 const storesContext = createContext({
     helloWorldStore,
