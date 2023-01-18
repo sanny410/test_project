@@ -1,4 +1,4 @@
-import {DateFormat} from 'Core/Const/DateTimeFormat';
+import {DATE_FORMAT} from 'Core/Const/DateTimeFormat';
 import moment from 'moment';
 
 export type TaskId = string;
@@ -78,7 +78,7 @@ export const createTask = (idGenerator: TaskIdGenerator, summary: TaskCreatingSu
         status: summary.status ?? task.status,
         comments: task.comments,
         createDate: task.createDate,
-        updateDate: moment().format(DateFormat),
+        updateDate: moment().format(DATE_FORMAT),
     };
 };
 
@@ -92,7 +92,7 @@ export const updateTask = (summary: TaskUpdateSummary, task: Task): Task => {
         status: summary.status ?? task.status,
         comments: task.comments,
         createDate: task.createDate,
-        updateDate: moment().format(DateFormat),
+        updateDate: moment().format(DATE_FORMAT),
     };
 };
 
