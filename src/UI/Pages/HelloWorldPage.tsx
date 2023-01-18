@@ -1,7 +1,7 @@
 import {FunctionComponent} from 'react';
 
-import HelloWorld from 'Components/HelloWorld';
-import PageWrapper from 'Components/PageWrapper';
+import HelloWorld from 'UI/Components/HelloWorld';
+import PageWrapper from 'UI/Components/PageWrapper';
 
 const HelloWorldPage: FunctionComponent = () => {
     return (

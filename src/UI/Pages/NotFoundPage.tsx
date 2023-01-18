@@ -1,7 +1,7 @@
 import {FunctionComponent} from 'react';
 
-import NotFound from 'Components/NotFound';
-import PageWrapper from 'Components/PageWrapper';
+import NotFound from 'UI/Components/NotFound';
+import PageWrapper from 'UI/Components/PageWrapper';
 
 const NotFoundPage: FunctionComponent = () => {
     return (
