@@ -28,14 +28,6 @@ export interface TaskComment {
     text: TaskCommentText;
 }
 
-export interface TaskIdGenerator {
-    generate: () => TaskId;
-}
-
-export interface TaskIdCommentGenerator {
-    generate: () => TaskCommentId;
-}
-
 export interface TaskCreatingSummary {
     title: TaskTitle;
     description: TaskDescription;
@@ -67,20 +59,6 @@ export enum ETaskStatus {
     DEVELOPMENT = 'development',
     DONE = 'done',
 }
-
-export const createTask = (idGenerator: TaskIdGenerator, summary: TaskCreatingSummary, task: Task): Task => {
-    return {
-        id: idGenerator.generate(),
-        title: summary.title ?? task.title,
-        description: summary.description ?? task.description,
-        expirationDate: summary.description ?? task.expirationDate,
-        priority: summary.priority ?? task.expirationDate,
-        status: summary.status ?? task.status,
-        comments: task.comments,
-        createDate: task.createDate,
-        updateDate: moment().format(DATE_FORMAT),
-    };
-};
 
 export const updateTask = (summary: TaskUpdateSummary, task: Task): Task => {
     return {
