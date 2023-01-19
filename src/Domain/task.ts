@@ -1,6 +1,5 @@
+import {DATE_FORMAT} from 'Core/Const/DateTimeFormat';
 import moment from 'moment';
-
-import {DateFormat} from '../Core/Const/DateTimeFormat';
 
 export type TaskId = string;
 export type TaskTitle = string;
@@ -27,14 +26,6 @@ export interface Task {
 export interface TaskComment {
     id: TaskCommentId;
     text: TaskCommentText;
-}
-
-export interface TaskIdGenerator {
-    generate: () => TaskId;
-}
-
-export interface TaskIdCommentGenerator {
-    generate: () => TaskCommentId;
 }
 
 export interface TaskCreatingSummary {
@@ -69,20 +60,6 @@ export enum ETaskStatus {
     DONE = 'done',
 }
 
-export const createTask = (idGenerator: TaskIdGenerator, summary: TaskCreatingSummary, task: Task): Task => {
-    return {
-        id: idGenerator.generate(),
-        title: summary.title ?? task.title,
-        description: summary.description ?? task.description,
-        expirationDate: summary.description ?? task.expirationDate,
-        priority: summary.priority ?? task.expirationDate,
-        status: summary.status ?? task.status,
-        comments: task.comments,
-        createDate: task.createDate,
-        updateDate: moment().format(DateFormat),
-    };
-};
-
 export const updateTask = (summary: TaskUpdateSummary, task: Task): Task => {
     return {
         id: task.id,
@@ -93,7 +70,7 @@ export const updateTask = (summary: TaskUpdateSummary, task: Task): Task => {
         status: summary.status ?? task.status,
         comments: task.comments,
         createDate: task.createDate,
-        updateDate: moment().format(DateFormat),
+        updateDate: moment().format(DATE_FORMAT),
     };
 };
 

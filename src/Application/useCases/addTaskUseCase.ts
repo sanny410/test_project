@@ -1,7 +1,6 @@
 import {TaskGateway} from 'Application/ports/taskGateway';
+import {TaskStore} from 'Application/ports/taskStore';
 import {TaskCreatingSummary} from 'Domain/task';
-
-import {TaskStore} from '../ports/taskStore';
 
 interface Dependencies {
     taskGateway: TaskGateway;
