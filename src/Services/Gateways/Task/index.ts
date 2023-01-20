@@ -6,17 +6,7 @@ import {v4 as uuidv4} from 'uuid';
 const taskGateway = {
     async getAll(): Promise<Task[]> {
         const tasks: Task[] = JSON.parse(localStorage.getItem('tasks') ?? '[]');
-        return tasks.map((task) => ({
-            id: task.id,
-            title: task.title,
-            description: task.description,
-            expirationDate: task.expirationDate,
-            priority: task.priority,
-            status: task.status,
-            comments: task.comments,
-            createDate: task.createDate,
-            updateDate: task.updateDate,
-        }));
+        return tasks;
     },
     async create(summary: TaskCreatingSummary): Promise<Task> {
         const task: Task = {
