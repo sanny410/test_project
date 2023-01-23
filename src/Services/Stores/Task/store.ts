@@ -13,7 +13,7 @@ export default class TaskStore {
     tasks: Task[] = [];
 
     @action
-    setProjects = (tasks: Task[]): void => {
+    setTasks = (tasks: Task[]): void => {
         this.tasks = tasks;
     };
 }
