@@ -4,7 +4,7 @@ import ROUTES from 'Core/Const/Routes';
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
 import HelloWorldPage from 'UI/Pages/HelloWorldPage';
 import NotFoundPage from 'UI/Pages/NotFoundPage';
-import Tasks from 'UI/Pages/TasksPage';
+import TasksPage from 'UI/Pages/TasksPage';
 
 /**
  * Роутер приложения
@@ -15,7 +15,7 @@ const AppRouter: FunctionComponent = () => {
             <Routes>
                 <Route path={ROUTES.APP.PATH} element={<HelloWorldPage />} />
                 <Route path="*" element={<NotFoundPage />} />
-                <Route path="/tasks" element={<Tasks />} />
+                <Route path="/tasks" element={<TasksPage />} />
             </Routes>
         </BrowserRouter>
     );
