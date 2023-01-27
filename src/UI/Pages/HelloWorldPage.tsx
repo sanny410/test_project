@@ -1,5 +1,6 @@
 import {FunctionComponent} from 'react';
 
+import {observer} from 'mobx-react';
 import HelloWorld from 'UI/Components/HelloWorld';
 import PageWrapper from 'UI/Components/PageWrapper';
 
@@ -11,4 +12,4 @@ const HelloWorldPage: FunctionComponent = () => {
     );
 };
 
-export default HelloWorldPage;
+export default observer(HelloWorldPage);
