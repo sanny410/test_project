@@ -1,6 +1,9 @@
 import React, {FunctionComponent} from 'react';
 
 import {Button} from 'antd';
+import {observer} from 'mobx-react';
+
+import 'UI/Components/AddTaskButton/index.scss';
 
 interface IProps {
     onClick: () => void;
@@ -14,4 +17,4 @@ const AddTaskButton: FunctionComponent<IProps> = ({onClick}) => {
     );
 };
 
-export default AddTaskButton;
+export default observer(AddTaskButton);

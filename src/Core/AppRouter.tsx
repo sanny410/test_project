@@ -4,7 +4,7 @@ import ROUTES from 'Core/Const/Routes';
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
 import HelloWorldPage from 'UI/Pages/HelloWorldPage';
 import NotFoundPage from 'UI/Pages/NotFoundPage';
-import Tasks from 'UI/Pages/Tasks';
+import Tasks from 'UI/Pages/TasksPage';
 
 /**
  * Роутер приложения

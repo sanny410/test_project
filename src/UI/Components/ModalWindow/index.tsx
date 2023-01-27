@@ -1,6 +1,9 @@
 import React, {FunctionComponent} from 'react';
 
-import {Modal, Form, DatePicker, Select, Input} from 'antd';
+import 'UI/Components/ModalWindow/index.scss';
+import {Modal, Form, DatePicker, Select, Input, Button} from 'antd';
+import {ETaskPriority, ETaskStatus} from 'Domain/task';
+import {observer} from 'mobx-react';
 
 interface IProps {
     isModalOpen: boolean;
@@ -12,7 +15,7 @@ const ModalWindow: FunctionComponent<IProps> = ({isModalOpen, onOk, onCancel}) =
     const {TextArea} = Input;
 
     return (
-        <Modal title="Добавление задачи" open={isModalOpen} onOk={onOk} onCancel={onCancel}>
+        <Modal title="Добавление задачи" open={isModalOpen} onOk={onOk} onCancel={onCancel} footer={null}>
             <Form
                 name="basic"
                 labelCol={{span: 8}}
@@ -37,9 +40,9 @@ const ModalWindow: FunctionComponent<IProps> = ({isModalOpen, onOk, onCancel}) =
                     <Select
                         defaultValue=""
                         options={[
-                            {value: 'high', label: 'Высокий'},
-                            {value: 'middle', label: 'Средний'},
-                            {value: 'low', label: 'Низкий'},
+                            {value: ETaskPriority.HIGH, label: 'Высокий'},
+                            {value: ETaskPriority.MIDDLE, label: 'Средний'},
+                            {value: ETaskPriority.LOW, label: 'Низкий'},
                         ]}
                     />
                 </Form.Item>
@@ -47,15 +50,20 @@ const ModalWindow: FunctionComponent<IProps> = ({isModalOpen, onOk, onCancel}) =
                     <Select
                         defaultValue=""
                         options={[
-                            {value: 'queue', label: 'Новая'},
-                            {value: 'development', label: 'В процессе'},
-                            {value: 'done', label: 'Выполнена'},
+                            {value: ETaskStatus.QUEUE, label: 'Новая'},
+                            {value: ETaskStatus.DEVELOPMENT, label: 'В процессе'},
+                            {value: ETaskStatus.DONE, label: 'Выполнена'},
                         ]}
                     />
+                </Form.Item>
+                <Form.Item wrapperCol={{offset: 8, span: 16}}>
+                    <Button type="primary" htmlType="submit">
+                        Добавить задачу
+                    </Button>
                 </Form.Item>
             </Form>
         </Modal>
     );
 };
 
-export default ModalWindow;
+export default observer(ModalWindow);
