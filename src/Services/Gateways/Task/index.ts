@@ -9,7 +9,6 @@ const taskGateway = {
         return tasks;
     },
     async create(summary: TaskCreatingSummary): Promise<Task> {
-        // const expirationDate = moment(summary.expirationDate).format(DATE_FORMAT);
         const task: Task = {
             id: uuidv4(),
             title: summary.title,

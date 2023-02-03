@@ -6,6 +6,7 @@ import {DATE_FORMAT} from 'Core/Const/DateTimeFormat';
 import dayjs from 'dayjs';
 import {ETaskPriority, ETaskStatus, TaskCreatingSummary} from 'Domain/task';
 import {observer} from 'mobx-react';
+import moment from 'moment';
 
 interface IProps {
     isModalOpen: boolean;
@@ -24,6 +25,7 @@ const ModalForm: FunctionComponent<IProps> = ({isModalOpen, onCancel, required, 
     };
 
     const onSubmit = async (task: TaskCreatingSummary): Promise<void> => {
+        task.expirationDate = moment(task.expirationDate).format(DATE_FORMAT);
         await useCase(task);
         onReset();
         onCancel();
