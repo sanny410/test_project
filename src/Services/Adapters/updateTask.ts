@@ -1,5 +1,5 @@
-import {addTaskUseCase} from 'Application/useCases/addTaskUseCase';
-import {TaskCreatingSummary} from 'Domain/task';
+import {updateTaskUseCase} from 'Application/useCases/updateTaskUseCase';
+import {TaskUpdateSummary, Task} from 'Domain/task';
 import {useTaskGateway} from 'Services/Adapters/gateway';
 import {useTaskStore} from 'Services/Adapters/store';
 
@@ -9,8 +9,8 @@ export const useUpdateTask = () => {
     const taskStore = useTaskStore();
 
     return {
-        async updateTask(summary: TaskCreatingSummary) {
-            return await addTaskUseCase(summary, {taskGateway, taskStore});
+        async updateTask(summary: TaskUpdateSummary, task: Task) {
+            return await updateTaskUseCase(summary, task, {taskGateway, taskStore});
         },
     };
 };
