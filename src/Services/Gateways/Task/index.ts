@@ -9,11 +9,12 @@ const taskGateway = {
         return tasks;
     },
     async create(summary: TaskCreatingSummary): Promise<Task> {
+        // const expirationDate = moment(summary.expirationDate).format(DATE_FORMAT);
         const task: Task = {
             id: uuidv4(),
             title: summary.title,
             description: summary.description,
-            expirationDate: summary.description,
+            expirationDate: summary.expirationDate,
             priority: summary.priority,
             status: summary.status,
             comments: [],
@@ -21,10 +22,10 @@ const taskGateway = {
             updateDate: moment().format(DATE_FORMAT),
         };
 
-        const tasks: Task[] = JSON.parse(localStorage.getItem('task') ?? '[]');
+        const tasks: Task[] = JSON.parse(localStorage.getItem('tasks') ?? '[]');
 
         tasks.push(task);
-        localStorage.setItem('task', JSON.stringify(task));
+        localStorage.setItem('tasks', JSON.stringify(tasks));
 
         return task;
     },
