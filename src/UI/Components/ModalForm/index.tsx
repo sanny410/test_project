@@ -2,33 +2,30 @@ import React, {FunctionComponent} from 'react';
 
 import 'UI/Components/ModalForm/index.scss';
 import {Modal, Form, DatePicker, Select, Input, Button, Space} from 'antd';
-import {DATE_FORMAT} from 'Core/Const/DateTimeFormat';
-import dayjs from 'dayjs';
-import {ETaskPriority, ETaskStatus, TaskCreatingSummary} from 'Domain/task';
+import {ETaskPriority, ETaskStatus, TaskTitle, TaskDescription, TaskExpirationDate} from 'Domain/task';
 import {observer} from 'mobx-react';
-import moment from 'moment';
 
 interface IProps {
     isModalOpen: boolean;
     onCancel: () => void;
     required: boolean;
-    useCase: (task: TaskCreatingSummary) => Promise<void>;
-    summary: TaskCreatingSummary | null;
+    summary: FormInput;
+    onSubmit: (task: FormInput) => void;
 }
 
-const ModalForm: FunctionComponent<IProps> = ({isModalOpen, onCancel, required, summary, useCase}) => {
-    const {TextArea} = Input;
+export interface FormInput {
+    title: TaskTitle;
+    description: TaskDescription;
+    expirationDate: TaskExpirationDate;
+    status: ETaskStatus;
+    priority: ETaskPriority;
+}
+
+const ModalForm: FunctionComponent<IProps> = ({isModalOpen, onCancel, required, summary, onSubmit}) => {
     const [form] = Form.useForm();
 
-    const onReset = (): void => {
+    const handleReset = (): void => {
         form.resetFields();
-    };
-
-    const onSubmit = async (task: TaskCreatingSummary): Promise<void> => {
-        task.expirationDate = moment(task.expirationDate).format(DATE_FORMAT);
-        await useCase(task);
-        onReset();
-        onCancel();
     };
 
     return (
@@ -40,13 +37,13 @@ const ModalForm: FunctionComponent<IProps> = ({isModalOpen, onCancel, required, 
                 labelCol={{span: 8}}
                 wrapperCol={{span: 16}}
                 style={{maxWidth: 800}}
-                initialValues={{remember: true}}
+                initialValues={{remember: false}}
             >
                 <Form.Item
                     label="Название"
                     name="title"
                     rules={[{required, message: 'Обязательное поле'}]}
-                    initialValue={summary !== null ? summary.title : ''}
+                    initialValue={summary.title}
                 >
                     <Input type="text" />
                 </Form.Item>
@@ -54,15 +51,15 @@ const ModalForm: FunctionComponent<IProps> = ({isModalOpen, onCancel, required, 
                     label="Описание"
                     name="description"
                     rules={[{required, message: 'Обязательное поле'}]}
-                    initialValue={summary !== null ? summary.description : ''}
+                    initialValue={summary.description}
                 >
-                    <TextArea rows={4} />
+                    <Input type="text" />
                 </Form.Item>
                 <Form.Item
                     label="Срок исполнения"
                     name="expirationDate"
                     rules={[{required, message: 'Обязательное поле'}]}
-                    initialValue={summary !== null ? dayjs(summary.expirationDate, DATE_FORMAT) : dayjs(new Date())}
+                    initialValue={summary.expirationDate}
                 >
                     <DatePicker />
                 </Form.Item>
@@ -73,7 +70,7 @@ const ModalForm: FunctionComponent<IProps> = ({isModalOpen, onCancel, required, 
                             {value: ETaskPriority.MIDDLE, label: 'Средний'},
                             {value: ETaskPriority.LOW, label: 'Низкий'},
                         ]}
-                        value={summary != null ? summary.priority : ''}
+                        defaultValue={summary.priority}
                     />
                 </Form.Item>
                 <Form.Item label="Статус" name="status" rules={[{required, message: 'Обязательное поле'}]}>
@@ -83,7 +80,7 @@ const ModalForm: FunctionComponent<IProps> = ({isModalOpen, onCancel, required, 
                             {value: ETaskStatus.DEVELOPMENT, label: 'В процессе'},
                             {value: ETaskStatus.DONE, label: 'Выполнена'},
                         ]}
-                        value={summary != null ? summary.status : ''}
+                        defaultValue={summary.status}
                     />
                 </Form.Item>
                 <Form.Item wrapperCol={{offset: 8, span: 16}}>
@@ -91,7 +88,7 @@ const ModalForm: FunctionComponent<IProps> = ({isModalOpen, onCancel, required, 
                         <Button type="primary" htmlType="submit">
                             Отправить
                         </Button>
-                        <Button onClick={onReset}>Сбросить</Button>
+                        <Button onClick={handleReset}>Сбросить</Button>
                     </Space>
                 </Form.Item>
             </Form>

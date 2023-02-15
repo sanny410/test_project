@@ -1,5 +1,5 @@
 import {DATE_FORMAT} from 'Core/Const/DateTimeFormat';
-import {Task, TaskCreatingSummary, TaskUpdateSummary} from 'Domain/task';
+import {Task, TaskCreatingSummary, TaskUpdateSummary, TaskId} from 'Domain/task';
 import moment from 'moment';
 import {v4 as uuidv4} from 'uuid';
 
@@ -28,20 +28,21 @@ const taskGateway = {
 
         return task;
     },
-    async update(summary: TaskUpdateSummary, task: Task): Promise<Task[]> {
-        const updateTask: Task = {
-            id: task.id,
-            title: summary.title ?? task.title,
-            description: summary.description ?? task.description,
-            expirationDate: summary.description ?? task.expirationDate,
-            priority: summary.priority ?? task.priority,
-            status: summary.status ?? task.status,
-            comments: task.comments,
-            createDate: task.createDate,
+    async update(summary: TaskUpdateSummary, id: TaskId): Promise<Task> {
+        const tasks: Task[] = JSON.parse(localStorage.getItem('tasks') ?? '[]');
+        let updateTask: Task = tasks.find((item) => item.id === id) as Task;
+
+        updateTask = {
+            id: updateTask.id,
+            title: summary.title ?? updateTask.title,
+            description: summary.description ?? updateTask.description,
+            expirationDate: summary.description ?? updateTask.expirationDate,
+            priority: summary.priority ?? updateTask.priority,
+            status: summary.status ?? updateTask.status,
+            comments: updateTask.comments,
+            createDate: updateTask.createDate,
             updateDate: moment().format(DATE_FORMAT),
         };
-
-        const tasks: Task[] = JSON.parse(localStorage.getItem('tasks') ?? '[]');
 
         const updateTaskList = tasks.map((task) => {
             if (task.id === updateTask.id) {
@@ -52,7 +53,7 @@ const taskGateway = {
 
         localStorage.setItem('tasks', JSON.stringify(updateTaskList));
 
-        return updateTaskList;
+        return updateTask;
     },
 };
 export default taskGateway;

@@ -1,6 +1,3 @@
-import {DATE_FORMAT} from 'Core/Const/DateTimeFormat';
-import moment from 'moment';
-
 export type TaskId = string;
 export type TaskTitle = string;
 export type TaskDescription = string;
@@ -59,20 +56,6 @@ export enum ETaskStatus {
     DEVELOPMENT = 'development',
     DONE = 'done',
 }
-
-export const updateTask = (summary: TaskUpdateSummary, task: Task): Task => {
-    return {
-        id: task.id,
-        title: summary.title ?? task.title,
-        description: summary.description ?? task.description,
-        expirationDate: summary.description ?? task.expirationDate,
-        priority: summary.priority ?? task.priority,
-        status: summary.status ?? task.status,
-        comments: task.comments,
-        createDate: task.createDate,
-        updateDate: moment().format(DATE_FORMAT),
-    };
-};
 
 export const addComment = (task: Task, comment: TaskComment): Task => {
     return {...task, comments: [...task.comments, comment]};
