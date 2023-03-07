@@ -1,4 +1,4 @@
-import React, {FunctionComponent} from 'react';
+import React, {FunctionComponent, useState} from 'react';
 
 import {DATE_FORMAT} from 'Core/Const/DateTimeFormat';
 import {DefaultTask} from 'Core/Const/DefaultTask';
@@ -12,11 +12,10 @@ import ModalForm, {FormInput} from 'UI/Components/ModalForm/index';
 interface IProps {
     isModalOpen: boolean;
     onCancel: () => void;
-    task: FormInput;
-    setTask: (value: FormInput) => void;
 }
 
-const AddTaskModal: FunctionComponent<IProps> = ({isModalOpen, onCancel, task, setTask}) => {
+const AddTaskModal: FunctionComponent<IProps> = ({isModalOpen, onCancel}) => {
+    const [task, setTask] = useState<FormInput>(DefaultTask);
     const {addTask} = useAddTask();
 
     const onSubmit = async (task: FormInput): Promise<void> => {

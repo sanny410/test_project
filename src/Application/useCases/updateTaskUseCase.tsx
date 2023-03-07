@@ -1,6 +1,6 @@
 import {TaskGateway} from 'Application/ports/taskGateway';
 import {TaskStore} from 'Application/ports/taskStore';
-import {TaskUpdateSummary, TaskId} from 'Domain/task';
+import {TaskUpdateSummary, TaskId, updateTaskList} from 'Domain/task';
 
 interface Dependencies {
     taskGateway: TaskGateway;
@@ -14,11 +14,6 @@ export const updateTaskUseCase = async (
 ): Promise<void> => {
     const updateTask = await dependencies.taskGateway.update(summary, id);
     const tasks = dependencies.taskStore.tasks;
-    const updateTaskList = tasks.map((task) => {
-        if (task.id === updateTask.id) {
-            task = updateTask;
-        }
-        return task;
-    });
-    dependencies.taskStore.setTasks(updateTaskList);
+    const taskList = updateTaskList(updateTask, tasks);
+    dependencies.taskStore.setTasks(taskList);
 };

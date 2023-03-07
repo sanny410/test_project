@@ -69,3 +69,10 @@ export const removeComment = (task: Task, comment: TaskComment): Task => {
 export const updateComment = (summary: TaskCommentUpdateSummary, comment: TaskComment): TaskComment => {
     return {id: comment.id, text: summary.text};
 };
+
+export const updateTaskList = (updateTask: Task, tasks: Task[]): Task[] => {
+    return tasks.map((task) => {
+        if (task.id === updateTask.id) task = updateTask;
+        return task;
+    });
+};

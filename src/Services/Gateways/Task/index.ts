@@ -1,5 +1,5 @@
 import {DATE_FORMAT} from 'Core/Const/DateTimeFormat';
-import {Task, TaskCreatingSummary, TaskUpdateSummary, TaskId} from 'Domain/task';
+import {Task, TaskCreatingSummary, TaskUpdateSummary, TaskId, updateTaskList} from 'Domain/task';
 import moment from 'moment';
 import {v4 as uuidv4} from 'uuid';
 
@@ -44,14 +44,9 @@ const taskGateway = {
             updateDate: moment().format(DATE_FORMAT),
         };
 
-        const updateTaskList = tasks.map((task) => {
-            if (task.id === updateTask.id) {
-                task = updateTask;
-            }
-            return task;
-        });
+        const taskList = updateTaskList(updateTask, tasks);
 
-        localStorage.setItem('tasks', JSON.stringify(updateTaskList));
+        localStorage.setItem('tasks', JSON.stringify(taskList));
 
         return updateTask;
     },
