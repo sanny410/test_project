@@ -46,15 +46,15 @@ export interface TaskCommentUpdateSummary {
 }
 
 export enum ETaskPriority {
-    HIGH = 'high',
-    MIDDLE = 'middle',
-    LOW = 'low',
+    HIGH = 'Высокий',
+    MIDDLE = 'Средний',
+    LOW = 'Низкий',
 }
 
 export enum ETaskStatus {
-    QUEUE = 'queue',
-    DEVELOPMENT = 'development',
-    DONE = 'done',
+    QUEUE = 'Новая',
+    DEVELOPMENT = 'В процессе',
+    DONE = 'Выполнено',
 }
 
 export const addComment = (task: Task, comment: TaskComment): Task => {

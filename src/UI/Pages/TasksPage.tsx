@@ -5,6 +5,7 @@ import {observer} from 'mobx-react';
 import AddTaskButton from 'UI/Components/AddTaskButton/index';
 import AddTaskModal from 'UI/Components/AddTaskModal/index';
 import PageWrapper from 'UI/Components/PageWrapper';
+import TaskTable from 'UI/Components/TaskTable/index';
 
 const TasksPage: FunctionComponent = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -23,6 +24,9 @@ const TasksPage: FunctionComponent = () => {
                 <AddTaskButton onClick={openModal} />
                 <AddTaskModal isModalOpen={isModalOpen} onCancel={closeModal} />
             </Space.Compact>
+            <Space>
+                <TaskTable />
+            </Space>
         </PageWrapper>
     );
 };

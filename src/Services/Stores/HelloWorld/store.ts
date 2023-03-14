@@ -9,5 +9,5 @@ export default class HelloWorldStore {
     }
 
     @observable
-    helloWorld = 'Hello world!';
+    helloWorld = 'Здесь ты можешь работать со своими задачами';
 }
