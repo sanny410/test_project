@@ -1,6 +1,3 @@
-import {DATE_FORMAT} from 'Core/Const/DateTimeFormat';
-import moment from 'moment';
-
 export type TaskId = string;
 export type TaskTitle = string;
 export type TaskDescription = string;
@@ -60,20 +57,6 @@ export enum ETaskStatus {
     DONE = 'done',
 }
 
-export const updateTask = (summary: TaskUpdateSummary, task: Task): Task => {
-    return {
-        id: task.id,
-        title: summary.title ?? task.title,
-        description: summary.description ?? task.description,
-        expirationDate: summary.description ?? task.expirationDate,
-        priority: summary.priority ?? task.priority,
-        status: summary.status ?? task.status,
-        comments: task.comments,
-        createDate: task.createDate,
-        updateDate: moment().format(DATE_FORMAT),
-    };
-};
-
 export const addComment = (task: Task, comment: TaskComment): Task => {
     return {...task, comments: [...task.comments, comment]};
 };
@@ -85,4 +68,11 @@ export const removeComment = (task: Task, comment: TaskComment): Task => {
 
 export const updateComment = (summary: TaskCommentUpdateSummary, comment: TaskComment): TaskComment => {
     return {id: comment.id, text: summary.text};
+};
+
+export const updateTaskList = (updateTask: Task, tasks: Task[]): Task[] => {
+    return tasks.map((task) => {
+        if (task.id === updateTask.id) task = updateTask;
+        return task;
+    });
 };

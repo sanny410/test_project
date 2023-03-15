@@ -3,8 +3,9 @@ import {FunctionComponent, useState} from 'react';
 import {Space} from 'antd';
 import {observer} from 'mobx-react';
 import AddTaskButton from 'UI/Components/AddTaskButton/index';
-import ModalWindow from 'UI/Components/ModalWindow/index';
+import AddTaskModal from 'UI/Components/AddTaskModal/index';
 import PageWrapper from 'UI/Components/PageWrapper';
+import TaskTable from 'UI/Components/TaskTable/index';
 
 const TasksPage: FunctionComponent = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -21,8 +22,11 @@ const TasksPage: FunctionComponent = () => {
         <PageWrapper>
             <Space.Compact block>
                 <AddTaskButton onClick={openModal} />
-                <ModalWindow isModalOpen={isModalOpen} onOk={closeModal} onCancel={closeModal} />
+                <AddTaskModal isModalOpen={isModalOpen} onCancel={closeModal} />
             </Space.Compact>
+            <Space>
+                <TaskTable />
+            </Space>
         </PageWrapper>
     );
 };
