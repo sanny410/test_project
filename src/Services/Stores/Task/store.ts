@@ -10,7 +10,7 @@ export default class TaskStore {
     }
 
     @observable
-    tasks: Task[] = JSON.parse(localStorage.getItem('tasks') ?? '[]');
+    tasks: Task[] = [];
 
     @action
     setTasks = (tasks: Task[]): void => {
