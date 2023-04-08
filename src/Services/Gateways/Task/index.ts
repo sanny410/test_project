@@ -36,7 +36,7 @@ const taskGateway = {
             id: updateTask.id,
             title: summary.title ?? updateTask.title,
             description: summary.description ?? updateTask.description,
-            expirationDate: summary.description ?? updateTask.expirationDate,
+            expirationDate: summary.expirationDate ?? updateTask.expirationDate,
             priority: summary.priority ?? updateTask.priority,
             status: summary.status ?? updateTask.status,
             comments: updateTask.comments,
@@ -49,6 +49,16 @@ const taskGateway = {
         localStorage.setItem('tasks', JSON.stringify(taskList));
 
         return updateTask;
+    },
+    async delete(id: TaskId): Promise<Task> {
+        const tasks: Task[] = JSON.parse(localStorage.getItem('tasks') ?? '[]');
+        const deleteTask: Task = tasks.find((item) => item.id === id) as Task;
+
+        const taskList = [...tasks.filter((task: Task) => task.id !== id)];
+
+        localStorage.setItem('tasks', JSON.stringify(taskList));
+
+        return deleteTask;
     },
 };
 export default taskGateway;

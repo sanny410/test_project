@@ -1,7 +1,7 @@
 export type TaskId = string;
 export type TaskTitle = string;
 export type TaskDescription = string;
-export type TaskExpirationDate = string | null;
+export type TaskExpirationDate = string;
 export type TaskCreateDate = string;
 export type TaskUpdateDate = string;
 

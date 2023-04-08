@@ -1,7 +1,8 @@
 import React, {FunctionComponent} from 'react';
 
-import 'UI/Components/ModalForm/index.scss';
 import {Modal, Form, DatePicker, Select, Input, Button, Space} from 'antd';
+import dayjs from 'dayjs';
+import 'UI/Components/ModalForm/index.scss';
 import {ETaskPriority, ETaskStatus, TaskTitle, TaskDescription, TaskExpirationDate} from 'Domain/task';
 import {observer} from 'mobx-react';
 
@@ -59,28 +60,36 @@ const ModalForm: FunctionComponent<IProps> = ({isModalOpen, onCancel, required, 
                     label="Срок исполнения"
                     name="expirationDate"
                     rules={[{required, message: 'Обязательное поле'}]}
-                    initialValue={summary.expirationDate}
+                    initialValue={summary.expirationDate !== '' ? dayjs(summary.expirationDate) : ''}
                 >
                     <DatePicker />
                 </Form.Item>
-                <Form.Item label="Приоритет" name="priority" rules={[{required, message: 'Обязательное поле'}]}>
+                <Form.Item
+                    label="Приоритет"
+                    name="priority"
+                    rules={[{required, message: 'Обязательное поле'}]}
+                    initialValue={summary.priority}
+                >
                     <Select
                         options={[
                             {value: ETaskPriority.HIGH, label: 'Высокий'},
                             {value: ETaskPriority.MIDDLE, label: 'Средний'},
                             {value: ETaskPriority.LOW, label: 'Низкий'},
                         ]}
-                        defaultValue={summary.priority}
                     />
                 </Form.Item>
-                <Form.Item label="Статус" name="status" rules={[{required, message: 'Обязательное поле'}]}>
+                <Form.Item
+                    label="Статус"
+                    name="status"
+                    rules={[{required, message: 'Обязательное поле'}]}
+                    initialValue={summary.status}
+                >
                     <Select
                         options={[
                             {value: ETaskStatus.QUEUE, label: 'Новая'},
                             {value: ETaskStatus.DEVELOPMENT, label: 'В процессе'},
                             {value: ETaskStatus.DONE, label: 'Выполнена'},
                         ]}
-                        defaultValue={summary.status}
                     />
                 </Form.Item>
                 <Form.Item wrapperCol={{offset: 8, span: 16}}>
