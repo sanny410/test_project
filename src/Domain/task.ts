@@ -1,7 +1,7 @@
 export type TaskId = string;
 export type TaskTitle = string;
 export type TaskDescription = string;
-export type TaskExpirationDate = string | null;
+export type TaskExpirationDate = string;
 export type TaskCreateDate = string;
 export type TaskUpdateDate = string;
 
@@ -75,4 +75,8 @@ export const updateTaskList = (updateTask: Task, tasks: Task[]): Task[] => {
         if (task.id === updateTask.id) task = updateTask;
         return task;
     });
+};
+
+export const deleteTask = (tasks: Task[], deleteTask: Task): Task[] => {
+    return [...tasks.filter((task: Task) => task.id !== deleteTask.id)];
 };

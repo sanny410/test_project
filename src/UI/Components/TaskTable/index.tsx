@@ -9,15 +9,19 @@ import {
     TaskExpirationDate,
     TaskDescription,
     TaskCreateDate,
+    Task,
     TaskUpdateDate,
 } from 'Domain/task';
 import {observer} from 'mobx-react';
 import {useGetTasks} from 'Services/Adapters/getTasks';
 import useStores from 'Services/Stores/index';
+import DeleteTaskButton from 'UI/Components/DeleteTaskButton/index';
+import UpdateTaskModal from 'UI/Components/UpdateTaskModal/index';
 
 import './index.scss';
 
 interface DataType {
+    task: Task;
     index: number;
     title: TaskTitle;
     description: TaskDescription;
@@ -86,11 +90,12 @@ const columns: ColumnsType<DataType> = [
     },
     {
         title: 'Действия',
-        key: 'action',
-        render: (_, record) => (
+        dataIndex: 'task',
+        key: 'task',
+        render: (task: Task) => (
             <Space size="middle">
-                <a>Редактировать</a>
-                <a>Удалить</a>
+                <UpdateTaskModal task={task} />
+                <DeleteTaskButton task={task} />
             </Space>
         ),
     },
@@ -99,8 +104,10 @@ const columns: ColumnsType<DataType> = [
 const TaskTable: FunctionComponent = () => {
     const {getTasks} = useGetTasks();
     const {tasks} = useStores().taskStore;
+
     const data = tasks.map((task, i) => {
         return {
+            task,
             index: ++i,
             title: task.title,
             description: task.description,
@@ -116,7 +123,7 @@ const TaskTable: FunctionComponent = () => {
         void getTasks();
     }, []);
 
-    return <Table className="table" columns={columns} dataSource={data} />;
+    return <Table className="table" columns={columns} dataSource={data} rowKey={'index'} />;
 };
 
 export default observer(TaskTable);
