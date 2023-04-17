@@ -76,3 +76,7 @@ export const updateTaskList = (updateTask: Task, tasks: Task[]): Task[] => {
         return task;
     });
 };
+
+export const changeTaskListAfterDeleteTask = (tasks: Task[], deleteTask: Task): Task[] => {
+    return [...tasks.filter((task: Task) => task.id !== deleteTask.id)];
+};
