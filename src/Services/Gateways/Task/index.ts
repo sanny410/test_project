@@ -1,3 +1,4 @@
+import {TaskDuplicationError} from 'Application/exceptions/tasks';
 import {DATE_FORMAT} from 'Core/Const/DateTimeFormat';
 import {Task, TaskCreatingSummary, TaskUpdateSummary, TaskId, updateTaskList} from 'Domain/task';
 import moment from 'moment';
@@ -5,8 +6,7 @@ import {v4 as uuidv4} from 'uuid';
 
 const taskGateway = {
     async getAll(): Promise<Task[]> {
-        const tasks: Task[] = JSON.parse(localStorage.getItem('tasks') ?? '[]');
-        return tasks;
+        return JSON.parse(localStorage.getItem('tasks') ?? '[]');
     },
     async create(summary: TaskCreatingSummary): Promise<Task> {
         const task: Task = {
@@ -23,7 +23,11 @@ const taskGateway = {
 
         const tasks: Task[] = JSON.parse(localStorage.getItem('tasks') ?? '[]');
 
-        tasks.push(task);
+        const isTaskTitleDuplicated = tasks.some((_task) => _task.title === summary.title);
+
+        if (isTaskTitleDuplicated) {
+            throw new TaskDuplicationError();
+        } else tasks.push(task);
         localStorage.setItem('tasks', JSON.stringify(tasks));
 
         return task;
