@@ -5,6 +5,7 @@ import MENU_ITEMS from 'Core/Const/MenuItems';
 import {observer} from 'mobx-react';
 import {MenuInfo} from 'rc-menu/lib/interface';
 import {useNavigate, useLocation} from 'react-router-dom';
+import ErrorBoundary from 'UI/Components/ErrorBoundary';
 
 import 'UI/Components/PageWrapper/index.scss';
 
@@ -26,21 +27,23 @@ const PageWrapper: FunctionComponent<IProps> = ({children}) => {
     };
 
     return (
-        <Layout className="layout">
-            <Header className="layout__header">
-                <Menu
-                    theme="light"
-                    mode="horizontal"
-                    selectedKeys={[selectedMenuItem]}
-                    items={menuItems}
-                    onClick={handleClick}
-                />
-            </Header>
-            <Content className="layout__content">
-                <div className="layout__content__container">{children}</div>
-            </Content>
-            <Footer className="layout__footer"></Footer>
-        </Layout>
+        <ErrorBoundary>
+            <Layout className="layout">
+                <Header className="layout__header">
+                    <Menu
+                        theme="light"
+                        mode="horizontal"
+                        selectedKeys={[selectedMenuItem]}
+                        items={menuItems}
+                        onClick={handleClick}
+                    />
+                </Header>
+                <Content className="layout__content">
+                    <div className="layout__content__container">{children}</div>
+                </Content>
+                <Footer className="layout__footer"></Footer>
+            </Layout>
+        </ErrorBoundary>
     );
 };
 
