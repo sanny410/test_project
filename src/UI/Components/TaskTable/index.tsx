@@ -40,7 +40,7 @@ const columns: ColumnsType<DataType> = [
         render: (text) => <a>{text}</a>,
     },
     {
-        title: 'Название задачи',
+        title: 'Название',
         dataIndex: 'title',
         key: 'title',
     },
@@ -62,9 +62,9 @@ const columns: ColumnsType<DataType> = [
             <Tag
                 color={
                     priority === ETaskPriority.LOW
-                        ? 'geekblue'
-                        : priority === ETaskPriority.MIDDLE
                         ? 'green'
+                        : priority === ETaskPriority.MIDDLE
+                        ? 'geekblue'
                         : 'volcano'
                 }
                 key={priority}
@@ -77,6 +77,16 @@ const columns: ColumnsType<DataType> = [
         title: 'Статус',
         dataIndex: 'status',
         key: 'status',
+        render: (status) => (
+            <Tag
+                color={
+                    status === ETaskStatus.DONE ? 'green' : status === ETaskStatus.DEVELOPMENT ? 'geekblue' : 'volcano'
+                }
+                key={status}
+            >
+                {status.toUpperCase()}
+            </Tag>
+        ),
     },
     {
         title: 'Дата создания',

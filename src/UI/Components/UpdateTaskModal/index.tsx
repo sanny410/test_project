@@ -1,6 +1,6 @@
 import React, {FunctionComponent, useState} from 'react';
 
-import {Button} from 'antd';
+import {EditOutlined} from '@ant-design/icons';
 import {DATE_FORMAT} from 'Core/Const/DateTimeFormat';
 import {DefaultTask} from 'Core/Const/DefaultTask';
 import dayjs from 'dayjs';
@@ -53,9 +53,7 @@ const UpdateTaskModal: FunctionComponent<IProps> = ({task}) => {
 
     return (
         <>
-            <Button type="primary" onClick={openModal}>
-                Редактировать
-            </Button>
+            <EditOutlined onClick={openModal} style={{color: '#1677ff'}} />
             <ModalForm
                 isModalOpen={isModalOpen}
                 onCancel={closeModal}

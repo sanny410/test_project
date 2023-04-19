@@ -24,7 +24,7 @@ const TasksPage: FunctionComponent = () => {
                 <AddTaskButton onClick={openModal} />
                 <AddTaskModal isModalOpen={isModalOpen} onCancel={closeModal} />
             </Space.Compact>
-            <Space>
+            <Space style={{width: '100%'}}>
                 <TaskTable />
             </Space>
         </PageWrapper>

@@ -1,5 +1,6 @@
 import React, {FunctionComponent} from 'react';
 
+import {AppstoreAddOutlined} from '@ant-design/icons';
 import {Button} from 'antd';
 import {observer} from 'mobx-react';
 
@@ -11,8 +12,8 @@ interface IProps {
 
 const AddTaskButton: FunctionComponent<IProps> = ({onClick}) => {
     return (
-        <Button type="primary" onClick={onClick}>
-            Добавить задачу
+        <Button onClick={onClick} type="primary" style={{borderRadius: '5px'}}>
+            Добавить <AppstoreAddOutlined />
         </Button>
     );
 };

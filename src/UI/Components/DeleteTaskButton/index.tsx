@@ -1,6 +1,6 @@
 import React, {FunctionComponent} from 'react';
 
-import {Button} from 'antd';
+import {DeleteOutlined} from '@ant-design/icons';
 import {Task} from 'Domain/task';
 import {observer} from 'mobx-react';
 import {useDeleteTask} from 'Services/Adapters/deleteTask';
@@ -13,11 +13,7 @@ interface IProps {
 
 const DeleteTaskButton: FunctionComponent<IProps> = ({task}) => {
     const {deleteTask} = useDeleteTask();
-    return (
-        <Button type="primary" onClick={async () => await deleteTask(task.id)}>
-            Удалить
-        </Button>
-    );
+    return <DeleteOutlined onClick={async () => await deleteTask(task.id)} style={{color: 'red'}} />;
 };
 
 export default observer(DeleteTaskButton);
