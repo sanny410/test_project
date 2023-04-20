@@ -1,13 +1,36 @@
 .layout__content__container {
+    box-sizing: border-box;
+
     .ant-table-cell {
         font-family: "Montserrat", sans-serif;
+
+        .ant-space.css-dev-only-do-not-override-1ij74fp.ant-space-horizontal.ant-space-align-center {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            margin-left: 5px;
+            gap: 3px !important;
+
+            .ant-space-item {
+                margin: 0;
+            }
+        }
     }
     .ant-space-item {
+        box-sizing: border-box;
+        margin-right: 15px;
         width: 100%;
     }
 }
 
 .ant-table-thead tr th {
     color: #ffffff !important;
-    background-color: #1678ff !important;
+    background-color: #8ba4f9 !important;
+    border: #ffffff;
+}
+
+.ant-space {
+    margin-left: 10px;
+    width: 100%;
+    box-sizing: border-box;
 }

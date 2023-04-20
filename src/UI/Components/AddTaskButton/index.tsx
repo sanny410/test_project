@@ -12,7 +12,11 @@ interface IProps {
 
 const AddTaskButton: FunctionComponent<IProps> = ({onClick}) => {
     return (
-        <Button onClick={onClick} type="primary" style={{borderRadius: '5px'}}>
+        <Button
+            onClick={onClick}
+            type="primary"
+            style={{borderRadius: '5px', backgroundColor: '#8BA4F9', margin: '10px'}}
+        >
             Добавить <AppstoreAddOutlined />
         </Button>
     );

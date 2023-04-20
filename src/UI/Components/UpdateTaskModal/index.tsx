@@ -53,7 +53,7 @@ const UpdateTaskModal: FunctionComponent<IProps> = ({task}) => {
 
     return (
         <>
-            <EditOutlined onClick={openModal} style={{color: '#1677ff'}} />
+            <EditOutlined onClick={openModal} style={{color: '#8ba4f9'}} />
             <ModalForm
                 isModalOpen={isModalOpen}
                 onCancel={closeModal}

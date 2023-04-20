@@ -94,7 +94,11 @@ const ModalForm: FunctionComponent<IProps> = ({isModalOpen, onCancel, required, 
                 </Form.Item>
                 <Form.Item wrapperCol={{offset: 8, span: 16}}>
                     <Space wrap>
-                        <Button type="primary" htmlType="submit">
+                        <Button
+                            type="primary"
+                            htmlType="submit"
+                            style={{borderRadius: '5px', backgroundColor: '#8BA4F9'}}
+                        >
                             Отправить
                         </Button>
                         <Button onClick={handleReset}>Сбросить</Button>
