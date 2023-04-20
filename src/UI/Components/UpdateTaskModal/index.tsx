@@ -8,7 +8,7 @@ import {TaskUpdateSummary, Task} from 'Domain/task';
 import {observer} from 'mobx-react';
 import moment from 'moment';
 import {useUpdateTask} from 'Services/Adapters/updateTask';
-import 'UI/Components/AddTaskModal/index.scss';
+import 'UI/Components/UpdateTaskModal/index.scss';
 import ModalForm, {FormInput} from 'UI/Components/ModalForm/index';
 
 interface IProps {
@@ -53,7 +53,7 @@ const UpdateTaskModal: FunctionComponent<IProps> = ({task}) => {
 
     return (
         <>
-            <EditOutlined onClick={openModal} style={{color: '#8ba4f9'}} />
+            <EditOutlined onClick={openModal} className="svg-edit" />
             <ModalForm
                 isModalOpen={isModalOpen}
                 onCancel={closeModal}

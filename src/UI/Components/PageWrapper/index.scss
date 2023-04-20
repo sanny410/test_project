@@ -10,10 +10,10 @@
     }
 
     .ant-menu-item-selected {
-        color: #8ba4f9 !important;
+        color: $color-page-button !important;
 
         &::after {
-            border-bottom-color: #8ba4f9 !important;
+            border-bottom-color: $color-page-button !important;
         }
     }
 
