@@ -2,7 +2,6 @@ import {FunctionComponent} from 'react';
 
 import ROUTES from 'Core/Const/Routes';
 import {BrowserRouter, Route, Routes} from 'react-router-dom';
-import HelloWorldPage from 'UI/Pages/HelloWorldPage';
 import NotFoundPage from 'UI/Pages/NotFoundPage';
 import TasksPage from 'UI/Pages/TasksPage';
 
@@ -13,9 +12,8 @@ const AppRouter: FunctionComponent = () => {
     return (
         <BrowserRouter>
             <Routes>
-                <Route path={ROUTES.APP.PATH} element={<HelloWorldPage />} />
                 <Route path="*" element={<NotFoundPage />} />
-                <Route path="/tasks" element={<TasksPage />} />
+                <Route path={ROUTES.APP.TASKS} element={<TasksPage />} />
             </Routes>
         </BrowserRouter>
     );

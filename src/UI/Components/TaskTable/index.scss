@@ -4,24 +4,18 @@
     box-sizing: border-box;
 
     .ant-table-cell {
+        text-align: center;
         font-family: "Montserrat", sans-serif;
-
-        .ant-space.css-dev-only-do-not-override-1ij74fp.ant-space-horizontal.ant-space-align-center {
-            display: flex;
-            flex-direction: row;
-            justify-content: flex-start;
-            margin-left: 5px;
-            gap: 3px !important;
-
-            .ant-space-item {
-                margin: 0;
-            }
-        }
     }
     .ant-space-item {
         box-sizing: border-box;
-        margin-right: 15px;
         width: 100%;
+    }
+
+    .ant-table-thead {
+        .ant-table-cell {
+            text-align: center;
+        }
     }
 }
 
@@ -31,8 +25,27 @@
     border: $color-page-content;
 }
 
-.ant-space {
-    margin-left: 10px;
-    width: 100%;
+.table {
+    margin: 0 auto;
     box-sizing: border-box;
+    .ant-space {
+        width: 100%;
+        box-sizing: border-box;
+
+        .ant-space.css-dev-only-do-not-override-1ij74fp.ant-space-horizontal.ant-space-align-center {
+            align-self: center;
+        }
+    }
+}
+
+.ant-pagination-item.ant-pagination-item-1.ant-pagination-item-active {
+    border-color: $color-page-button;
+
+    a {
+        color: $color-page-button;
+    }
+}
+
+.ant-space.css-dev-only-do-not-override-1ij74fp.ant-space-horizontal.ant-space-align-center {
+    gap: 2px !important;
 }

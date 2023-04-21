@@ -133,7 +133,7 @@ const TaskTable: FunctionComponent = () => {
         void getTasks();
     }, []);
 
-    return <Table className="table" columns={columns} dataSource={data} rowKey={'index'} />;
+    return <Table className="table" columns={columns} dataSource={data} rowKey={'index'} scroll={{x: true}} />;
 };
 
 export default observer(TaskTable);
