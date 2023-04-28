@@ -1,0 +1,50 @@
+@import "src/UI/Styles/colors";
+
+.layout {
+    width: 100%;
+    height: 100vh;
+    box-sizing: border-box;
+
+    .ant-menu-item-active::after {
+        border-bottom-color: $color-page-button !important;
+    }
+
+    .ant-menu-item-selected {
+        color: $color-page-button !important;
+
+        &::after {
+            border-bottom-color: $color-page-button !important;
+        }
+    }
+
+    &__header {
+        position: sticky;
+        top: 0;
+        z-index: 1;
+        width: 100%;
+        background-color: $color-page-header !important;
+    }
+
+    &__content {
+        padding: 0 20px;
+
+        &__container {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            gap: 15px;
+            height: 100%;
+            background-color: $color-page-content;
+            padding: 20px;
+            box-sizing: border-box;
+
+            h1 {
+                margin: 15px;
+            }
+        }
+    }
+
+    &__footer {
+        text-align: center;
+    }
+}

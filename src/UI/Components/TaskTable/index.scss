@@ -1,0 +1,46 @@
+@import "src/UI/Styles/colors.scss";
+
+.layout__content__container {
+    box-sizing: border-box;
+
+    .ant-table-cell {
+        text-align: center;
+        font-family: "Montserrat", sans-serif;
+    }
+    .ant-space-item {
+        box-sizing: border-box;
+        width: 100%;
+    }
+
+    .ant-table-thead {
+        .ant-table-cell {
+            text-align: center;
+        }
+    }
+}
+
+.ant-table-thead tr th {
+    color: $color-page-content !important;
+    background-color: $color-page-button !important;
+    border: $color-page-content;
+}
+
+.table {
+    margin: 0 auto;
+    box-sizing: border-box;
+    .ant-space {
+        box-sizing: border-box;
+
+        .ant-space.css-dev-only-do-not-override-1ij74fp.ant-space-horizontal.ant-space-align-center {
+            align-self: center;
+        }
+    }
+}
+
+.ant-pagination-item.ant-pagination-item-1.ant-pagination-item-active {
+    border-color: $color-page-button;
+
+    a {
+        color: $color-page-button;
+    }
+}
