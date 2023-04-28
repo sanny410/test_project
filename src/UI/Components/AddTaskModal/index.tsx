@@ -27,7 +27,14 @@ const AddTaskModal: FunctionComponent<IProps> = ({isModalOpen, onCancel}) => {
     };
 
     return (
-        <ModalForm isModalOpen={isModalOpen} onCancel={onCancel} required={true} summary={task} onSubmit={onSubmit} />
+        <ModalForm
+            isModalOpen={isModalOpen}
+            onCancel={onCancel}
+            required={true}
+            summary={task}
+            onSubmit={onSubmit}
+            title={'Добавить задачу'}
+        />
     );
 };
 

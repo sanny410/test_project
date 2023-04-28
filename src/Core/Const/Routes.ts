@@ -3,8 +3,7 @@
  */
 const ROUTES = {
     APP: {
-        PATH: '/',
-        TASKS: '/tasks',
+        TASKS: '/',
     },
 };
 

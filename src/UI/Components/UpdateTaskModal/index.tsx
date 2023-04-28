@@ -1,6 +1,6 @@
 import React, {FunctionComponent, useState} from 'react';
 
-import {Button} from 'antd';
+import {EditOutlined} from '@ant-design/icons';
 import {DATE_FORMAT} from 'Core/Const/DateTimeFormat';
 import {DefaultTask} from 'Core/Const/DefaultTask';
 import dayjs from 'dayjs';
@@ -8,7 +8,7 @@ import {TaskUpdateSummary, Task} from 'Domain/task';
 import {observer} from 'mobx-react';
 import moment from 'moment';
 import {useUpdateTask} from 'Services/Adapters/updateTask';
-import 'UI/Components/AddTaskModal/index.scss';
+import 'UI/Components/UpdateTaskModal/index.scss';
 import ModalForm, {FormInput} from 'UI/Components/ModalForm/index';
 
 interface IProps {
@@ -53,15 +53,14 @@ const UpdateTaskModal: FunctionComponent<IProps> = ({task}) => {
 
     return (
         <>
-            <Button type="primary" onClick={openModal}>
-                Редактировать
-            </Button>
+            <EditOutlined onClick={openModal} className="svg-edit" />
             <ModalForm
                 isModalOpen={isModalOpen}
                 onCancel={closeModal}
                 required={true}
                 summary={taskInput}
                 onSubmit={onSubmit}
+                title={'Редактировать задачу'}
             />
         </>
     );

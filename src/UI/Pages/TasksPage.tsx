@@ -20,10 +20,10 @@ const TasksPage: FunctionComponent = () => {
 
     return (
         <PageWrapper>
-            <Space.Compact block>
+            <Space>
                 <AddTaskButton onClick={openModal} />
                 <AddTaskModal isModalOpen={isModalOpen} onCancel={closeModal} />
-            </Space.Compact>
+            </Space>
             <Space>
                 <TaskTable />
             </Space>

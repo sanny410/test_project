@@ -35,7 +35,11 @@ const taskGateway = {
 
         let updateTask: Task = tasks.find((item) => item.id === id) as Task;
 
-        if (updateTask.title !== summary.title && this.isTaskTitleDuplicated(tasks, updateTask.title))
+        if (
+            summary.title !== undefined &&
+            updateTask.title !== summary.title &&
+            this.isTaskTitleDuplicated(tasks, summary.title)
+        )
             throw new TaskDuplicationError();
 
         updateTask = {

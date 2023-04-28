@@ -5,10 +5,6 @@ import ROUTES from './Routes';
  */
 const MENU_ITEMS = [
     {
-        title: 'Главная',
-        route: ROUTES.APP.PATH,
-    },
-    {
         title: 'Задачи',
         route: ROUTES.APP.TASKS,
     },
