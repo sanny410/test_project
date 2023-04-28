@@ -29,7 +29,6 @@
     margin: 0 auto;
     box-sizing: border-box;
     .ant-space {
-        width: 100%;
         box-sizing: border-box;
 
         .ant-space.css-dev-only-do-not-override-1ij74fp.ant-space-horizontal.ant-space-align-center {
@@ -44,8 +43,4 @@
     a {
         color: $color-page-button;
     }
-}
-
-.ant-space.css-dev-only-do-not-override-1ij74fp.ant-space-horizontal.ant-space-align-center {
-    gap: 2px !important;
 }

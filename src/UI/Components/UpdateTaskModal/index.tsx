@@ -60,6 +60,7 @@ const UpdateTaskModal: FunctionComponent<IProps> = ({task}) => {
                 required={true}
                 summary={taskInput}
                 onSubmit={onSubmit}
+                title={'Редактировать задачу'}
             />
         </>
     );

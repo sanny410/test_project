@@ -12,6 +12,7 @@ interface IProps {
     required: boolean;
     summary: FormInput;
     onSubmit: (task: FormInput) => void;
+    title: string;
 }
 
 export interface FormInput {
@@ -22,7 +23,7 @@ export interface FormInput {
     priority: ETaskPriority;
 }
 
-const ModalForm: FunctionComponent<IProps> = ({isModalOpen, onCancel, required, summary, onSubmit}) => {
+const ModalForm: FunctionComponent<IProps> = ({isModalOpen, onCancel, required, summary, onSubmit, title}) => {
     const [form] = Form.useForm();
 
     const handleReset = (): void => {
@@ -30,7 +31,7 @@ const ModalForm: FunctionComponent<IProps> = ({isModalOpen, onCancel, required, 
     };
 
     return (
-        <Modal title="Добавление задачи" open={isModalOpen} onCancel={onCancel} footer={null}>
+        <Modal title={`${title}`} open={isModalOpen} onCancel={onCancel} footer={null}>
             <Form
                 name="basic"
                 form={form}
